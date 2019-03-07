@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/amigos_css.css">
 
     <title>Hello, world!</title>
     <style>
@@ -45,7 +46,13 @@
           <li class="nav-item">
               <a class="nav-link active" href="#">
               <span data-feather="home"></span>
-              Incio <span class="sr-only">(current)</span>
+                <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="publicaciones.html">
+              <span data-feather="file"></span>
+              Inicio
             </a>
           </li>
           <li class="nav-item">
@@ -88,6 +95,13 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <div class="album py-5 bg-light">
     <div class="container">
+        
+    <div class="buscador d-flex justify-content-center">
+       <div class="col-lg-6 col-lg-offset-4 ">
+            <input type="search" id="search" value="" class="form-control" placeholder="Buscar amigo..">   
+           <!-- https://bootsnipp.com/snippets/93XX  BUSCADOR COMPLETO-->
+        </div>
+    </div>
 
       <div class="row">
         <div class="col-md-4">
