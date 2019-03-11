@@ -1,12 +1,12 @@
 $( document ).ready(function() {
-    var amigos = ["juan", "chino", "cristobal", "turko", "ruso","atope de power in the naight", "guillermo"];
+    var amigos = ["chino", "el primo del chino", " el hijo del chino", " chino 2" , "japones", "rumano"];
     //var amigos = ["juan"];
     var elm = 
-            '<div class="col-md-4">'+
+            '<div class="col-md-4 parentTop">'+
                 '<div class="card mb-4 shadow-sm">'+
                     '<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><image xlink:href="" height="255" width="100%"/></svg>'+
-                    '<div class="card-body friendName">'+
-                        //'<p class="card-text">Nombre del amigo</p>'+
+                    '<div class="card-body ">'+
+                        '<p class="card-text friendName">Nombre del amigo</p>'+
                     '</div>'+
                  '</div>'+  
             '</div>';   
@@ -16,8 +16,7 @@ $( document ).ready(function() {
         $(elm).appendTo("#amigos"); 
 
         // Añadimos a la tarjeta creada el nombre del amigo
-        var name = '<p class="card-text">'+amigos[i]+'</p>'     
-        $( ".friendName" ).last().append(name);
+        $( ".friendName" ).last().text(amigos[i]);
 
         // Le añadimos la foto
         var img = "http://i1.sndcdn.com/avatars-000403867065-5g5khr-original.jpg"
@@ -26,6 +25,19 @@ $( document ).ready(function() {
     }
 });
 
-function clear(){
-    $("#amigos").text="";
+function mostrarAmigos(text){
+    // mostramos todos los amigos
+    $("#amigos").children().show();
+    
+    // Si hay algo escrito
+    if(text!=""){
+        // iteramos por ellos
+        $('#amigos').find('.friendName').each(function(i) { 
+            // Si no es lo que buscamos, lo coultamos
+            
+            if($(this).text().indexOf(text) < 0){
+                $("#amigos").children().eq(i).hide();
+            }
+        });
+    }    
 }
