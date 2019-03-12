@@ -27,7 +27,7 @@ public class servletLogin extends HttpServlet {
     UsuarioFacade usuarioFacade; 
     
 
-    private static final String SUCCESS = "index.jsp";
+    private static final String SUCCESS = "amigos.jsp";
     private static final String ERROR = "login.jsp";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

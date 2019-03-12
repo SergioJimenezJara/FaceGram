@@ -113,7 +113,11 @@
                                     </div>
                                 </div>
 
-                                <div class="row" id="amigos"></div>
+                                <div class="row" id="amigos">
+                                    
+                                    
+                                </div>
+                                
                             </div>
                             <div class="buscador d-flex justify-content-center">
                                 <div class="col-lg-6 col-lg-offset-4 ">
