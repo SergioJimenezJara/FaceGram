@@ -8,6 +8,7 @@ package dao;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import model.Usuario;
 
 /**
@@ -29,4 +30,15 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         super(Usuario.class);
     }
     
+    public Usuario comprobarDatos(String mail, String password){
+        Usuario usuario=null;
+        try{
+        String sql = "Select * from usuario u where usuario.correo=:correo and u.pass=:password";
+        usuario = (Usuario) em.createQuery(sql).setParameter("correo", mail).setParameter("password", password).getSingleResult();
+        } catch(Exception e){
+            throw e;
+        }
+        
+        return usuario;
+    }
 }

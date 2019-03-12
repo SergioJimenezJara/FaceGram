@@ -5,8 +5,10 @@
  */
 package controller;
 
+import dao.UsuarioFacade;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,12 +22,18 @@ import model.Usuario;
  */
 @WebServlet("/login")
 public class servletLogin extends HttpServlet {
+    
+    @EJB
+    UsuarioFacade usuarioFacade; 
+    
 
     private static final String SUCCESS = "index.jsp";
     private static final String ERROR = "login.jsp";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        
         response.setContentType("text/html;charset=UTF-8");
 
         try {
@@ -35,14 +43,14 @@ public class servletLogin extends HttpServlet {
             usuario.setPass(request.getParameter("pass"));
 
             //Buscar
-            usuario = svc.buscar(usuario);
+            usuario = usuarioFacade.comprobarDatos(usuario.getCorreo(), usuario.getPass());
 
             if (usuario == null) {
                 request.setAttribute("error", "Usuario/contraseña incorrecta");
                 request.getRequestDispatcher(ERROR).forward(request, response);
             } else {
                 //Guardar en la sesión
-                request.getSession().setAttribute(LoginFilter.ATT_USER, usuario);
+                request.getSession().setAttribute("usuario", usuario);
                 request.getRequestDispatcher(SUCCESS).forward(request, response);
             }
 
