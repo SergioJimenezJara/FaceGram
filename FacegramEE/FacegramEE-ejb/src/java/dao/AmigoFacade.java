@@ -5,10 +5,12 @@
  */
 package dao;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import model.Amigo;
+import model.Usuario;
 
 /**
  *
@@ -27,6 +29,17 @@ public class AmigoFacade extends AbstractFacade<Amigo> {
 
     public AmigoFacade() {
         super(Amigo.class);
+    }
+    
+    public List<Usuario> traerAmigos(int id){
+    List<Usuario> amigos = null;
+        try{  
+        String sql = "SELECT * FROM Usuario WHERE id_usuario in (select id_usuario_2 from amigo where id_usuario_1=:id)";
+        amigos = (List<Usuario>) em.createQuery(sql).setParameter("id", id).getResultList();
+        } catch(Exception e){
+            throw e;
+        }
+        return amigos;
     }
     
 }

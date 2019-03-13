@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 
@@ -46,7 +46,7 @@
 
         </nav>
 
-       <div class="container-fluid">
+        <div class="container-fluid">
             <div class="row">
                 <nav class="col-md-2 d-none d-md-block bg-light sidebar fixed-top" style="margin-top: 40px">
 
@@ -91,41 +91,51 @@
                                 </li>
                             </ul>
 
-                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
 
-                            <a class="d-flex align-items-center text-muted" href="#">
-                                <span data-feather="plus-circle"></span>
-                            </a>
-                        </h6>
+                                <a class="d-flex align-items-center text-muted" href="#">
+                                    <span data-feather="plus-circle"></span>
+                                </a>
+                            </h6>
                         </div>
                     </div>
                 </nav>
 
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                     <!--<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">-->
-                        <div class="album py-5 bg-light">
-                            <div class="container">
+                    <div class="album py-5 bg-light">
+                        <div class="container">
 
-                                <div class="buscador d-flex justify-content-center">
-                                    <div class="col-lg-6 col-lg-offset-4 ">
-                                        <input type="search" id="search" onchange="mostrarAmigos(this.value)" value="" class="form-control" placeholder="Buscar amigo..">   
-                                        <!-- https://bootsnipp.com/snippets/93XX  BUSCADOR COMPLETO-->
-                                    </div>
-                                </div>
-
-                                <div class="row" id="amigos">
-                                    
-                                    
-                                </div>
-                                
-                            </div>
                             <div class="buscador d-flex justify-content-center">
                                 <div class="col-lg-6 col-lg-offset-4 ">
-                                    <p class=text-center>¿No encuentras a quien buscas?</p>
-                                    <input type="search" id="" value="" class="form-control" placeholder="Buscar nuevo amigo..">   
+                                    <input type="search" id="search" onchange="mostrarAmigos(this.value)" value="" class="form-control" placeholder="Buscar amigo..">   
+                                    <!-- https://bootsnipp.com/snippets/93XX  BUSCADOR COMPLETO-->
                                 </div>
                             </div>
+                                            
+                            <div class="row" id="amigos">
+                                <p style="color:red;">${error}</p>
+                                <c:forEach items="${amigos}" var="amigo">
+                                    <div class="col-md-4 parentTop">
+                                        <div class="card mb-4 shadow-sm">
+                                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><image xlink:href="${amigo.imagen}" height="255" width="100%"/></svg>
+                                            <div class="card-body ">
+                                                <p class="card-text friendName">${amigo.nombre}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+
+                            </div>
+
                         </div>
+                        <div class="buscador d-flex justify-content-center">
+                            <div class="col-lg-6 col-lg-offset-4 ">
+                                <p class=text-center>¿No encuentras a quien buscas?</p>
+                                <input type="search" id="" value="" class="form-control" placeholder="Buscar nuevo amigo..">   
+                            </div>
+                        </div>
+                    </div>
                     <!--</div>-->
 
 

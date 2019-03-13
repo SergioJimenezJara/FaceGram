@@ -5,9 +5,11 @@
  */
 package controller;
 
+import dao.AmigoFacade;
 import dao.UsuarioFacade;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,37 +22,37 @@ import model.Usuario;
  *
  * @author Jimmy-Dev
  */
-@WebServlet("/login")
-public class servletLogin extends HttpServlet {
-    
-    @EJB
-    UsuarioFacade usuarioFacade; 
+@WebServlet(name = "servletAmigos", urlPatterns = {"/servletAmigos"})
+public class servletAmigos extends HttpServlet {
+
+
+        @EJB
+        AmigoFacade amigoFacade; 
     
 
     private static final String SUCCESS = "amigos.jsp";
-    private static final String ERROR = "login.jsp";
-    
+    private static final String ERROR = "amigos.jsp";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
+
         response.setContentType("text/html;charset=UTF-8");
 
         try {
-            //Datos del formulario
-            Usuario usuario = new Usuario();
-            usuario.setCorreo(request.getParameter("email"));
-            usuario.setPass(request.getParameter("password"));
+            //Datos del usuario
+            Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+            
+            
+            //Buscar amigos del usuario
+            List<Usuario> amigos;
+            amigos = amigoFacade.traerAmigos(usuario.getIdUsuario());
 
-            //Buscar
-            usuario = usuarioFacade.comprobarDatos(usuario.getCorreo(), usuario.getPass());
-
-            if (usuario == null) {
-                request.setAttribute("error", "Usuario/contraseña incorrecta");
+            if (amigos == null) {
+                request.setAttribute("error", "No se han encontrado amigos");
                 request.getRequestDispatcher(ERROR).forward(request, response);
             } else {
                 //Guardar en la sesión
-                request.getSession().setAttribute("usuario", usuario);
+                request.getSession().setAttribute("amigos", amigos);
                 request.getRequestDispatcher(SUCCESS).forward(request, response);
             }
 
