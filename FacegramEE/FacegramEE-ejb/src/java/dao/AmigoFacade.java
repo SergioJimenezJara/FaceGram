@@ -5,6 +5,8 @@
  */
 package dao;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -30,16 +32,16 @@ public class AmigoFacade extends AbstractFacade<Amigo> {
     public AmigoFacade() {
         super(Amigo.class);
     }
-    
-    public List<Usuario> traerAmigos(int id){
-    List<Usuario> amigos = null;
-        try{  
-        String sql = "SELECT * FROM Usuario WHERE id_usuario in (select id_usuario_2 from amigo where id_usuario_1=:id)";
-        amigos = (List<Usuario>) em.createQuery(sql).setParameter("id", id).getResultList();
-        } catch(Exception e){
-            throw e;
+
+    public List<Usuario> traerAmigos(Usuario u) {
+        
+        Collection<Amigo> listaAmigos = u.getAmigoCollection();
+        ArrayList<Usuario> listaUsers = new ArrayList();
+        for (Amigo a:listaAmigos) {
+            listaUsers.add(a.getIdUsuario2());
         }
-        return amigos;
+        
+        return listaUsers;
     }
-    
+
 }

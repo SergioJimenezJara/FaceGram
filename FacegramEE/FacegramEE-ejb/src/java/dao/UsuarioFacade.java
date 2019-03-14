@@ -5,10 +5,10 @@
  */
 package dao;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import model.Usuario;
 
 /**
@@ -33,8 +33,12 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
     public Usuario comprobarDatos(String mail, String password){
         Usuario usuario=null;
         try{
-        String sql = "Select * from usuario u where usuario.correo=:correo and u.pass=:password";
-        usuario = (Usuario) em.createQuery(sql).setParameter("correo", mail).setParameter("password", password).getSingleResult();
+        String sql = "Select u from Usuario u where u.correo=:correo and u.pass=:password";
+        List<Usuario> temp;
+        temp = (List<Usuario>) em.createQuery(sql).setParameter("correo", mail).setParameter("password", password).getResultList();
+        if(temp.size()!=0){
+            usuario = temp.get(0);
+        }
         } catch(Exception e){
             throw e;
         }

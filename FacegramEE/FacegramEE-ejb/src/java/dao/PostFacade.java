@@ -5,10 +5,12 @@
  */
 package dao;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import model.Post;
+import model.Usuario;
 
 /**
  *
@@ -29,4 +31,25 @@ public class PostFacade extends AbstractFacade<Post> {
         super(Post.class);
     }
     
+    public List<Post> recogerMisPost(int id){
+        List<Post> listaPost;
+        try{  
+        String sql = "select p from Post p where p.idUsuario=:id";
+        listaPost = (List<Post>) em.createQuery(sql).setParameter("id", id).getResultList();
+        } catch(Exception e){
+            throw e;
+        }
+        return listaPost;
+    }
+    
+    public List<Post> recogerPostsAmigos(int id){
+        List<Post> listaPost;
+        try{  
+        String sql = "select p from Post p where p.idUsuario!=:id";
+        listaPost = (List<Post>) em.createQuery(sql).setParameter("id", id).getResultList();
+        } catch(Exception e){
+            throw e;
+        }
+        return listaPost;
+    }
 }

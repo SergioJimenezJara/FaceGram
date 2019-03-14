@@ -35,7 +35,7 @@ function mostrarAmigos(text){
         $('#amigos').find('.friendName').each(function(i) { 
             // Si no es lo que buscamos, lo coultamos
             
-            if($(this).text().indexOf(text) < 0){
+            if($(this).text().toLocaleLowerCase()   .indexOf(text.toLowerCase()) < 0){
                 $("#amigos").children().eq(i).hide();
             }
         });

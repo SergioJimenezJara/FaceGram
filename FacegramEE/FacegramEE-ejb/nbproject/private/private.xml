@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/asafe/OneDrive/Documentos/asafe_olimpio/Facegram/FacegramEE/FacegramEE-ejb/src/java/model/Amigo.java</file>
-            <file>file:/C:/Users/asafe/OneDrive/Documentos/asafe_olimpio/Facegram/FacegramEE/FacegramEE-ejb/src/java/dao/AbstractFacade.java</file>
+            <file>file:/D:/3DCube/Proyecto%20final/FaceGram/FacegramEE/FacegramEE-ejb/src/java/dao/PostFacade.java</file>
+            <file>file:/D:/3DCube/Proyecto%20final/FaceGram/FacegramEE/FacegramEE-ejb/src/java/dao/AmigoFacade.java</file>
+            <file>file:/D:/3DCube/Proyecto%20final/FaceGram/FacegramEE/FacegramEE-ejb/src/java/dao/UsuarioFacade.java</file>
+            <file>file:/D:/3DCube/Proyecto%20final/FaceGram/FacegramEE/FacegramEE-ejb/src/java/model/Amigo.java</file>
+            <file>file:/D:/3DCube/Proyecto%20final/FaceGram/FacegramEE/FacegramEE-ejb/src/java/model/Usuario.java</file>
+            <file>file:/D:/3DCube/Proyecto%20final/FaceGram/FacegramEE/FacegramEE-ejb/src/java/model/Post.java</file>
         </group>
     </open-files>
 </project-private>

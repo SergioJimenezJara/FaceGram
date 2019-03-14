@@ -1,10 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
-
-<!doctype html>
-<html lang="en">
+<%-- 
+    Document   : publicaciones
+    Created on : 13-mar-2019, 16:29:46
+    Author     : julio
+--%>
+<%@taglib prefix="" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -12,12 +14,10 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="css/amigos_css.css">
-        <script type="text/javascript" src="js/amigos.js"></script>
 
-
-        <title>Hello, world!</title>
+        <link rel="stylesheet" href="css/publicaciones_css.css">
+        <script type="text/javascript" src="js/publiaciones.js" ></script>
+        <title>FaceGram</title>
         <style>
             .bd-placeholder-img {
                 font-size: 1.125rem;
@@ -53,32 +53,32 @@
 
                     <svg style="margin-top: 20px" width="100%" height="225"  preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><rect width="100%" height="100%" fill="#55595c" /></svg>
                     <div class="card bg-light mb-3" style="max-width: 18rem;">
-                        <div class="card-header" align="center">Nombre Usuario</div>
+                        <div class="card-header" align="center">${usuario.usuario} ee</div>
 
 
 
                         <div class="sidebar-sticky" >
                             <ul class="nav flex-column" style="margin-top: 20px">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="index.html">
+                                    <a class="nav-link active" href="index">
                                         <span data-feather="home"></span>
                                         Incio <span class="sr-only">(current)</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="publicaciones.html">
+                                    <a class="nav-link" href="publicaciones">
                                         <span data-feather="file"></span>
                                         Mis Publicaciones
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="amigos.html">
+                                    <a class="nav-link" href="amigos">
                                         <span data-feather="shopping-cart"></span>
                                         Amigos
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="gruposAmigos.html">
+                                    <a class="nav-link" href="#">
                                         <span data-feather="users"></span>
                                         Mis Grupos de Amigos
                                     </a>
@@ -102,43 +102,66 @@
                 </nav>
 
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                    <!--<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">-->
-                    <div class="album py-5 bg-light">
-                        <div class="container">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <div class="album py-5 bg-light">
 
-                            <div class="buscador d-flex justify-content-center">
-                                <div class="col-lg-6 col-lg-offset-4 ">
-                                    <input type="search" id="search" onchange="mostrarAmigos(this.value)" value="" class="form-control" placeholder="Buscar amigo..">   
-                                    <!-- https://bootsnipp.com/snippets/93XX  BUSCADOR COMPLETO-->
+
+                            <div class="container">
+                                <div class="publicaciones">
+                                    <form>
+                                        <label class="my-1 mr-2" for="tipoPublicacion">Subir una publicacion:</label>
+
+
+                                        <br>
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="text" class="form-control" placeholder="Titulo">   
+                                            </div>
+                                            <div class="custom-file" id="custom-file">
+                                                <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+                                                <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                                            </div>
+
+                                        </div>
+
+
+                                        <button type="submit" class="btn btn-primary my-1" style="display:none">Publicar</button>
+                                    </form>
                                 </div>
-                            </div>
-                                            
-                            <div class="row" id="amigos">
-                                <p style="color:red;">${error}</p>
-                                <c:forEach items="${amigos}" var="amigo">
-                                    <div class="col-md-4 parentTop">
-                                        <div class="card mb-4 shadow-sm">
-                                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><image xlink:href="${amigo.imagen}" height="255" width="100%"/></svg>
-                                            <div class="card-body ">
-                                                <p class="card-text friendName">${amigo.nombre}</p>
+
+                                <div class="col" align=center>
+
+                                    <c:forEach items="${posts}" var="post">
+                                    <div class="col" align=center>
+
+                                        <div class="col-md-8">
+                                            <div class="card mb-4 shadow-sm">
+
+                                                <svg class="bd-placeholder-img card-img-top" width="100%" height="500" img src="${post.imagen}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><rect width="100%" height="100%" fill="#55595c"/></svg>
+
+                                                <div class="card-body">
+                                                    <p class="card-text">${post.titulo}</p>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-danger btn-sm">Like</button>
+                                                            <button type="button" class="btn btn-primary btn-sm">Comentar</button>
+                                                        </div>
+                                                        <small class="text-muted">${usuario.usuario}</small>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </c:forEach>
 
-                            </div>
 
-                        </div>
-                        <div class="buscador d-flex justify-content-center">
-                            <div class="col-lg-6 col-lg-offset-4 ">
-                                <p class=text-center>¿No encuentras a quien buscas?</p>
-                                <input type="search" id="" value="" class="form-control" placeholder="Buscar nuevo amigo..">   
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!--</div>-->
-
-
 
                     <footer class="container">
                         <p class="float-right"><a href="#">Back to top</a></p>
@@ -154,4 +177,5 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
+</body>
 </html>

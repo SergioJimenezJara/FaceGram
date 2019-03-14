@@ -3,12 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/asafe/OneDrive/Documentos/asafe_olimpio/Facegram/FacegramEE/FacegramEE-war/src/java/service/GrupoFacadeREST.java</file>
-            <file>file:/C:/Users/asafe/OneDrive/Documentos/asafe_olimpio/Facegram/FacegramEE/FacegramEE-war/src/java/service/GrupoUsuarioFacadeREST.java</file>
-            <file>file:/C:/Users/asafe/OneDrive/Documentos/asafe_olimpio/Facegram/FacegramEE/FacegramEE-war/src/java/service/PostFacadeREST.java</file>
-            <file>file:/C:/Users/asafe/OneDrive/Documentos/asafe_olimpio/Facegram/FacegramEE/FacegramEE-war/src/java/service/AmigoFacadeREST.java</file>
-            <file>file:/C:/Users/asafe/OneDrive/Documentos/asafe_olimpio/Facegram/FacegramEE/FacegramEE-war/src/java/service/ApplicationConfig.java</file>
-            <file>file:/C:/Users/asafe/OneDrive/Documentos/asafe_olimpio/Facegram/FacegramEE/FacegramEE-war/src/java/service/UsuarioFacadeREST.java</file>
+            <file>file:/D:/3DCube/Proyecto%20final/FaceGram/FacegramEE/FacegramEE-war/web/amigos.jsp</file>
+            <file>file:/D:/3DCube/Proyecto%20final/FaceGram/FacegramEE/FacegramEE-war/src/java/controller/servletAmigos.java</file>
+            <file>file:/D:/3DCube/Proyecto%20final/FaceGram/FacegramEE/FacegramEE-war/src/java/controller/servletPublicaciones.java</file>
+            <file>file:/D:/3DCube/Proyecto%20final/FaceGram/FacegramEE/FacegramEE-war/web/publicaciones.jsp</file>
+            <file>file:/D:/3DCube/Proyecto%20final/FaceGram/FacegramEE/FacegramEE-war/web/publicaciones.html</file>
+            <file>file:/D:/3DCube/Proyecto%20final/FaceGram/FacegramEE/FacegramEE-war/src/java/controller/servletLogin.java</file>
+            <file>file:/D:/3DCube/Proyecto%20final/FaceGram/FacegramEE/FacegramEE-war/web/WEB-INF/web.xml</file>
+            <file>file:/D:/3DCube/Proyecto%20final/FaceGram/FacegramEE/FacegramEE-war/web/login.jsp</file>
+            <file>file:/D:/3DCube/Proyecto%20final/FaceGram/FacegramEE/FacegramEE-war/src/java/controller/servletIndex.java</file>
+            <file>file:/D:/3DCube/Proyecto%20final/FaceGram/FacegramEE/FacegramEE-war/web/index.jsp</file>
+            <file>file:/D:/3DCube/Proyecto%20final/FaceGram/FacegramEE/FacegramEE-war/web/amigos.html</file>
         </group>
     </open-files>
 </project-private>

@@ -5,15 +5,18 @@
  */
 package controller;
 
+import dao.PostFacade;
 import dao.UsuarioFacade;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Post;
 import model.Usuario;
 
 /**
@@ -22,23 +25,27 @@ import model.Usuario;
  */
 @WebServlet("/login")
 public class servletLogin extends HttpServlet {
-    
-    @EJB
-    UsuarioFacade usuarioFacade; 
-    
 
-    private static final String SUCCESS = "amigos.jsp";
-    private static final String ERROR = "login.jsp";
-    
+    @EJB
+    UsuarioFacade usuarioFacade;
+
+    @EJB
+    PostFacade postFacade;
+
+    private static final String SUCCESS = "/index.jsp";
+    private static final String ERROR = "/login.jsp";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
+
         response.setContentType("text/html;charset=UTF-8");
+
+        Usuario usuario = null;
+        List<Post> listaPosts = null;
 
         try {
             //Datos del formulario
-            Usuario usuario = new Usuario();
+            usuario = new Usuario();
             usuario.setCorreo(request.getParameter("email"));
             usuario.setPass(request.getParameter("password"));
 
@@ -51,6 +58,11 @@ public class servletLogin extends HttpServlet {
             } else {
                 //Guardar en la sesión
                 request.getSession().setAttribute("usuario", usuario);
+
+                //Buscar los post de los amigos
+                listaPosts = postFacade.recogerPostsAmigos(usuario.getIdUsuario());
+                
+                request.setAttribute("posts", listaPosts);
                 request.getRequestDispatcher(SUCCESS).forward(request, response);
             }
 
