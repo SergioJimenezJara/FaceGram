@@ -114,7 +114,7 @@
                             </div>
                             <p style="color:red;">${error}</p>
                             <div class="row" id="amigos">
-                               
+
                                 <c:forEach items="${amigos}" var="amigo">
                                     <div class="col-md-4 parentTop">
                                         <div class="card mb-4 shadow-sm">
@@ -131,10 +131,27 @@
                         </div>
                         <div class="buscador d-flex justify-content-center">
                             <div class="col-lg-6 col-lg-offset-4 ">
-                                <p class=text-center>¿No encuentras a quien buscas?</p>
+                                <p class=text-center>¿Quizas conozcas a alguien de aqui?</p>
                                 <input type="search" id="" value="" class="form-control" placeholder="Buscar nuevo amigo..">   
                             </div>
+
                         </div>
+                        <div class="row" id="">
+
+                            <c:forEach items="${desconocidos}" var="desconocido">
+                                <div class="col-md-4 parentTop">
+                                    <div class="card mb-4 shadow-sm">
+                                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><image xlink:href="" height="255" width="100%"/></svg>
+                                        <div class="card-body ">
+                                            <p class="card-text friendName">${desconocido.usuario}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+
+                        </div>
+
+
                     </div>
                     <!--</div>-->
 

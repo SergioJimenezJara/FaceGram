@@ -1,0 +1,43 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 07-mar-2019, 18:01:18
+    Author     : asafe
+*/
+
+.card
+{
+    padding: 2rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 2%;
+    text-align: center;
+    border-radius: 1rem;
+}
+.form-signin{
+    width: 100%;
+}
+
+.form-control{
+    border-radius:1.5rem;
+    height:50px;
+}
+.btnSubmit
+{
+    border:none;
+    border-radius:1.5rem;
+    padding: 1%;
+    width: 100%;
+    cursor: pointer;
+    background: #007bff;
+    color: #fff;
+    height: 50px;
+}
+
+body{
+    background-image:url("https://images.unsplash.com/photo-1510018407610-ec28c7890e6d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1134&q=80");
+    background-repeat:no-repeat;
+    background-size: cover;
+}

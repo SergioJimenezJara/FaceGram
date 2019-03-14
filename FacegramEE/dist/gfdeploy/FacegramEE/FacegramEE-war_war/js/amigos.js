@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+﻿/*$( document ).ready(function() {
     var amigos = ["chino", "el primo del chino", " el hijo del chino", " chino 2" , "japones", "rumano"];
     //var amigos = ["juan"];
     var elm = 
@@ -23,7 +23,7 @@ $( document ).ready(function() {
         $( "image" ).last().attr("href", img);
 
     }
-});
+});/*
 
 function mostrarAmigos(text){
     // mostramos todos los amigos
