@@ -114,7 +114,7 @@
                             </div>
                             <p style="color:red;">${error}</p>
                             <div class="row" id="amigos">
-
+                               
                                 <c:forEach items="${amigos}" var="amigo">
                                     <div class="col-md-4 parentTop">
                                         <div class="card mb-4 shadow-sm">
@@ -131,12 +131,11 @@
                         </div>
                         <div class="buscador d-flex justify-content-center">
                             <div class="col-lg-6 col-lg-offset-4 ">
-                                <p class=text-center>¿Quizas conozcas a alguien de aqui?</p>
-                                <input type="search" id="" value="" class="form-control" placeholder="Buscar nuevo amigo..">   
+                                <p class="text-center">Busca nuevos amigos</p>
+                                <input type="search" id="search" onchange="mostrarDesconocidos(this.value)" value="" class="form-control" placeholder="Buscar amigo..">   
                             </div>
-
                         </div>
-                        <div class="row" id="">
+                        <div class="row" id="desconocidos">
 
                             <c:forEach items="${desconocidos}" var="desconocido">
                                 <div class="col-md-4 parentTop">
@@ -150,8 +149,6 @@
                             </c:forEach>
 
                         </div>
-
-
                     </div>
                     <!--</div>-->
 
