@@ -5,3 +5,20 @@
     padding: 10px;
     margin-bottom: 30px;
 }
+
+
+.mydivoverlap{
+    position: relative;
+    z-index: 1;
+}
+.mybuttonoverlap{
+    position: absolute;
+    z-index: 2;
+    top: 30%;
+    display: none;
+    left: 33%;	
+}
+.mydivouter:hover .mybuttonoverlap{ 
+    display:block;
+}
+

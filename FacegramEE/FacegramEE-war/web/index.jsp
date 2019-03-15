@@ -49,7 +49,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                <nav class="col-md-2 d-none d-md-block bg-light sidebar fixed-top" style="margin-top: 40px">
+                <nav class="col-md-2 d-none d-md-block bg-light sidebar fixed-top" style="margin-top: 55px">
 
 
                     <svg style="margin-top: 20px" width="100%" height="225"  preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><rect width="100%" height="100%" fill="#55595c" /></svg>
