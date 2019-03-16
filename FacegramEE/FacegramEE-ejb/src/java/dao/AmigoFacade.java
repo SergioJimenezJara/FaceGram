@@ -35,7 +35,7 @@ public class AmigoFacade extends AbstractFacade<Amigo> {
     }
 
     public List<Usuario> traerAmigos(Usuario u) {
-        
+
         List<Usuario> listaAmigos = new ArrayList();
         List<Amigo> amigos = new ArrayList();
         String sql = "Select a from Amigo a where a.idUsuario1=:usuario";
@@ -44,7 +44,6 @@ public class AmigoFacade extends AbstractFacade<Amigo> {
         for (Amigo a : amigos) {
             listaAmigos.add(a.getIdUsuario2());
         }
-
 
         return listaAmigos;
     }
@@ -94,16 +93,14 @@ public class AmigoFacade extends AbstractFacade<Amigo> {
     }
 
     public void borrarAmigo(Usuario u, int idDesconocido) {
-            Amigo a = new Amigo();
+
+  
         Usuario desconocido = new Usuario();
-
-        a.setIdUsuario1(u);
         desconocido.setIdUsuario(idDesconocido);
-        a.setIdUsuario2(desconocido);
-        em.remove(a);
 
-        a.setIdUsuario1(desconocido);
-        a.setIdUsuario2(u);
-        em.remove(a);
+        String sql = "delete from Amigo a where a.idUsuario1=:id1 and a.idUsuario2=:id2";
+        em.createQuery(sql).setParameter("id1", u).setParameter("id2", desconocido).executeUpdate();
+        em.createQuery(sql).setParameter("id1", desconocido).setParameter("id2", u).executeUpdate();
+
     }
 }

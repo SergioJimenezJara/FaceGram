@@ -132,7 +132,8 @@
 
                                 <div class="container">
                                     <c:forEach items="${posts}" var="post">
-                                        <div class="col" align=center>
+                                        <p>a</p>
+                                        <!--<div class="col" align=center>
 
                                             <div class="">
                                                 <div class="card mb-4 shadow-sm">
@@ -148,11 +149,11 @@
                                                             </div>
                                                             <small class="text-muted">${usuario.usuario}</small>
                                                         </div>
-                                                    </div>
+                                                     </div>
                                                 </div>
                                             </div>
 
-                                        </div>
+                                        </div>-->
                                     </c:forEach>
                                 </div>
                             </div>
