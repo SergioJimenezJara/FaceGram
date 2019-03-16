@@ -53,7 +53,7 @@
 
                     <svg style="margin-top: 20px" width="100%" height="225"  preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><rect width="100%" height="100%" fill="#55595c" /></svg>
                     <div class="card bg-light mb-3" style="max-width: 18rem;">
-                        <div class="card-header" align="center">${usuario.usuario} ee</div>
+                        <div class="card-header" align="center">${usuario.usuario}</div>
 
 
 
@@ -102,11 +102,11 @@
                 </nav>
 
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                        <div class="album py-5 bg-light">
+                    <div class=" text-center d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <div class="album py-5 bg-light ">
 
 
-                            <div class="container">
+                            <div class="container ">
                                 <div class="publicaciones">
                                     <form>
                                         <label class="my-1 mr-2" for="tipoPublicacion">Subir una publicacion:</label>
@@ -130,34 +130,30 @@
                                     </form>
                                 </div>
 
-                                <div class="col" align=center>
-
+                                <div class="container">
                                     <c:forEach items="${posts}" var="post">
-                                    <div class="col" align=center>
+                                        <div class="col" align=center>
 
-                                        <div class="col-md-8">
-                                            <div class="card mb-4 shadow-sm">
+                                            <div class="">
+                                                <div class="card mb-4 shadow-sm">
 
-                                                <svg class="bd-placeholder-img card-img-top" width="100%" height="500" img src="${post.imagen}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><rect width="100%" height="100%" fill="#55595c"/></svg>
+                                                    <svg class="bd-placeholder-img card-img-top" width="100%" height="500" img src="${post.imagen}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><rect width="100%" height="100%" fill="#55595c"/></svg>
 
-                                                <div class="card-body">
-                                                    <p class="card-text">${post.titulo}</p>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <div class="btn-group">
-                                                            <button type="button" class="btn btn-danger btn-sm">Like</button>
-                                                            <button type="button" class="btn btn-primary btn-sm">Comentar</button>
+                                                    <div class="card-body">
+                                                        <p class="card-text">${post.idUsuario} ................</p>
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn btn-danger btn-sm">Like</button>
+                                                                <button type="button" class="btn btn-primary btn-sm">Comentar</button>
+                                                            </div>
+                                                            <small class="text-muted">${usuario.usuario}</small>
                                                         </div>
-                                                        <small class="text-muted">${usuario.usuario}</small>
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
-
-                                    </div>
-                                </c:forEach>
-
-
-
+                                    </c:forEach>
                                 </div>
                             </div>
                         </div>

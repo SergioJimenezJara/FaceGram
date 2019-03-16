@@ -5,8 +5,9 @@
  */
 package controller;
 
-import dao.PostFacade;
+import dao.AmigoFacade;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -14,58 +15,39 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Post;
 import model.Usuario;
 
 /**
  *
  * @author Jimmy-Dev
  */
-@WebServlet("/index")
-public class servletIndex extends HttpServlet {
+@WebServlet("/borrarAmigo")
+public class servletBorrarAmigo extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @EJB
-    PostFacade postFacade;
+    AmigoFacade amigoFacade;
 
-    private static final String SUCCESS = "index.jsp";
-    private static final String ERROR = "index.jsp";
+    private static final String FORWARD = "amigos";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         response.setContentType("text/html;charset=UTF-8");
 
-        Usuario usuario = null;
-        List<Post> listaPosts = null;
-        
         try {
-            //Datos del formulario
-            usuario = (Usuario) request.getSession().getAttribute("usuario");
-            
-            //Buscar
-            listaPosts = postFacade.recogerPostsAmigos(usuario);
+            //Datos del usuario
+            Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
 
-            if (listaPosts == null) {
-                request.setAttribute("error", "No hay posts que mostrar");
-                request.getRequestDispatcher(ERROR).forward(request, response);
-            } else {
-                //Guardar en la sesión
-                request.getSession().setAttribute("posts", listaPosts);
-                request.getRequestDispatcher(SUCCESS).forward(request, response);
-            }
+            //Buscar amigos del usuario
+            int idAmigo = Integer.parseInt(request.getParameter("idConocido"));
+
+            amigoFacade.borrarAmigo(usuario, idAmigo);
+
+            request.getRequestDispatcher(FORWARD).forward(request, response);
 
         } catch (Exception ex) {
             request.setAttribute("error", "Error al conectar");
-            request.getRequestDispatcher(ERROR).forward(request, response);
+            request.getRequestDispatcher(FORWARD).forward(request, response);
         }
     }
 

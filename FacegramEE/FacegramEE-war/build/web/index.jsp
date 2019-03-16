@@ -103,7 +103,7 @@
                 </nav>
 
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <div class="d-flex justify-content-between flex-wrap  border-bottom">
                         <div class="album py-5 bg-light">
 
 
@@ -111,7 +111,7 @@
                                 <c:forEach items="${posts}" var="post">
                                     <div class="col" align=center>
 
-                                        <div class="col-md-8">
+                                        <div class="">
                                             <div class="card mb-4 shadow-sm">
 
                                                 <svg class="bd-placeholder-img card-img-top" width="100%" height="500" img src="${post.imagen}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><rect width="100%" height="100%" fill="#55595c"/></svg>

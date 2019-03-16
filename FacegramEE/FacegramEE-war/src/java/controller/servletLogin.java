@@ -60,7 +60,7 @@ public class servletLogin extends HttpServlet {
                 request.getSession().setAttribute("usuario", usuario);
 
                 //Buscar los post de los amigos
-                listaPosts = postFacade.recogerPostsAmigos(usuario.getIdUsuario());
+                listaPosts = postFacade.recogerPostsAmigos(usuario);
                 
                 request.setAttribute("posts", listaPosts);
                 request.getRequestDispatcher(SUCCESS).forward(request, response);

@@ -11,6 +11,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import model.Amigo;
 import model.Usuario;
 
@@ -34,14 +35,18 @@ public class AmigoFacade extends AbstractFacade<Amigo> {
     }
 
     public List<Usuario> traerAmigos(Usuario u) {
+        
+        List<Usuario> listaAmigos = new ArrayList();
+        List<Amigo> amigos = new ArrayList();
+        String sql = "Select a from Amigo a where a.idUsuario1=:usuario";
+        amigos = (List<Amigo>) em.createQuery(sql).setParameter("usuario", u).getResultList();
 
-        Collection<Amigo> listaAmigos = u.getAmigoCollection();
-        ArrayList<Usuario> listaUsers = new ArrayList();
-        for (Amigo a : listaAmigos) {
-            listaUsers.add(a.getIdUsuario2());
+        for (Amigo a : amigos) {
+            listaAmigos.add(a.getIdUsuario2());
         }
 
-        return listaUsers;
+
+        return listaAmigos;
     }
 
     public List<Usuario> traerDesconocidos(Usuario u) {
@@ -53,7 +58,6 @@ public class AmigoFacade extends AbstractFacade<Amigo> {
         String sql = "Select a from Amigo a where a.idUsuario1=:usuario";
         amigos = (List<Amigo>) em.createQuery(sql).setParameter("usuario", u).getResultList();
 
-        
         for (Amigo a : amigos) {
             listaAmigos.add(a.getIdUsuario2());
         }
@@ -64,14 +68,42 @@ public class AmigoFacade extends AbstractFacade<Amigo> {
 
         // quitamos de la lista a los amigos, obteniendo a los usuarios NO amigos
         for (Usuario amigo : listaAmigos) {
-            if(listaUsers.contains(amigo)){
+            if (listaUsers.contains(amigo)) {
                 listaUsers.remove(amigo);
             }
-            
+
             //Quitamos al usuario actual
             listaUsers.remove(u);
         }
 
         return listaUsers;
+    }
+
+    public void anadirAmigo(Usuario u, int idDesconocido) {
+        Amigo a = new Amigo();
+        Usuario desconocido = new Usuario();
+        a.setIdUsuario1(u);
+        desconocido.setIdUsuario(idDesconocido);
+        a.setIdUsuario2(desconocido);
+        em.persist(a);
+
+        Amigo b = new Amigo();
+        b.setIdUsuario1(desconocido);
+        b.setIdUsuario2(u);
+        em.persist(b);
+    }
+
+    public void borrarAmigo(Usuario u, int idDesconocido) {
+            Amigo a = new Amigo();
+        Usuario desconocido = new Usuario();
+
+        a.setIdUsuario1(u);
+        desconocido.setIdUsuario(idDesconocido);
+        a.setIdUsuario2(desconocido);
+        em.remove(a);
+
+        a.setIdUsuario1(desconocido);
+        a.setIdUsuario2(u);
+        em.remove(a);
     }
 }

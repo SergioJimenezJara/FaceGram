@@ -45,4 +45,33 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         
         return usuario;
     }
+    
+    //Comprobar Usuario
+    public Usuario comprobarUsuario (String mail) {
+        Usuario usuario=null;
+        try {
+        String sql = "Select u from Usuario where u.correo=:correo";
+        List<Usuario> temp;
+        
+        temp = (List<Usuario>)em.createQuery(sql).setParameter("correo", mail).getSingleResult();
+        if (temp.size() !=0) {
+            usuario = temp.get(0);
+        }
+        } catch(Exception e){
+            throw e;
+        }
+        return usuario;
+    }
+    
+    public void registrarUsuario(String mail, String password, String username) {
+        // Código para registrar el usuario en la DDBB, debería de ir en la facade
+        
+        String sql = "INSERT INTO u (usuario,pass,correo) VALUES (username,password,mail)";
+        try {
+           em.createQuery(sql).executeUpdate();
+        } catch (Exception e) {
+            throw e;
+        }
+        
+    }
 }

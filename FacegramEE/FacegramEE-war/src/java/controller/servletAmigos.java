@@ -43,19 +43,15 @@ public class servletAmigos extends HttpServlet {
             //Buscar amigos del usuario
             List<Usuario> amigos;
             amigos = amigoFacade.traerAmigos(usuario);
-            
+
             List<Usuario> desconocidos;
             desconocidos = amigoFacade.traerDesconocidos(usuario);
 
-            if (amigos == null) {
-                request.setAttribute("error", "No se han encontrado amigos");
-                request.getRequestDispatcher(ERROR).forward(request, response);
-            } else {
-                //Guardar en la sesión
-                request.getSession().setAttribute("amigos", amigos);
-                request.getSession().setAttribute("desconocidos", desconocidos);
-                request.getRequestDispatcher(SUCCESS).forward(request, response);
-            }
+            //Guardar en la sesión
+            request.getSession().setAttribute("amigos", amigos);
+
+            request.getSession().setAttribute("desconocidos", desconocidos);
+            request.getRequestDispatcher(SUCCESS).forward(request, response);
 
         } catch (Exception ex) {
             request.setAttribute("error", "Error al conectar");

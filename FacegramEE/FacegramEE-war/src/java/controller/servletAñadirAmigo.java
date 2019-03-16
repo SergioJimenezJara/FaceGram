@@ -5,8 +5,10 @@
  */
 package controller;
 
+import dao.AmigoFacade;
 import dao.PostFacade;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -21,8 +23,8 @@ import model.Usuario;
  *
  * @author Jimmy-Dev
  */
-@WebServlet("/index")
-public class servletIndex extends HttpServlet {
+@WebServlet("/anadirAmigo")
+public class servletAñadirAmigo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,10 +36,10 @@ public class servletIndex extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @EJB
-    PostFacade postFacade;
+    AmigoFacade amigoFacade;
 
-    private static final String SUCCESS = "index.jsp";
-    private static final String ERROR = "index.jsp";
+    private static final String SUCCESS = "amigos";
+    private static final String ERROR = "amigos";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -45,23 +47,14 @@ public class servletIndex extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         Usuario usuario = null;
-        List<Post> listaPosts = null;
-        
+
         try {
+            int idDesconocido = Integer.parseInt(request.getParameter("idDesconocido"));
             //Datos del formulario
             usuario = (Usuario) request.getSession().getAttribute("usuario");
-            
-            //Buscar
-            listaPosts = postFacade.recogerPostsAmigos(usuario);
-
-            if (listaPosts == null) {
-                request.setAttribute("error", "No hay posts que mostrar");
-                request.getRequestDispatcher(ERROR).forward(request, response);
-            } else {
-                //Guardar en la sesión
-                request.getSession().setAttribute("posts", listaPosts);
-                request.getRequestDispatcher(SUCCESS).forward(request, response);
-            }
+            //Añadimos el nuevo amigo
+            amigoFacade.anadirAmigo(usuario, idDesconocido);
+            request.getRequestDispatcher(SUCCESS).forward(request, response);
 
         } catch (Exception ex) {
             request.setAttribute("error", "Error al conectar");

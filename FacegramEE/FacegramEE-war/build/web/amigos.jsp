@@ -114,11 +114,13 @@
                             </div>
                             <p style="color:red;">${error}</p>
                             <div class="row" id="amigos">
-                               
+
                                 <c:forEach items="${amigos}" var="amigo">
                                     <div class="col-md-4 parentTop mydivouter">
                                         <div class="card mb-4 shadow-sm ">
-                                            <input type="button" class=" text-center mybuttonoverlap btn btn-info" value="Borrar amigo"/>
+                                            <form  action="borrarAmigo?idConocido=${amigo.idUsuario}" method="post">
+                                                <input type="submit" class=" text-center mybuttonoverlap btn btn-info" value="Borrar amigo"/>
+                                            </form>
                                             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><image xlink:href="" height="255" width="100%"/></svg>
                                             <div class="card-body ">
                                                 <p class="card-text friendName">${amigo.usuario}</p>
@@ -140,9 +142,9 @@
 
                             <c:forEach items="${desconocidos}" var="desconocido">
                                 <div class="col-md-4 parentTop mydivouter">
-                                    <div class="card mb-4 shadow-sm">ç
-                                        <form  action="AnadirAmigo" method="post">
-                                        <input type="button" class=" text-center mybuttonoverlap btn btn-info" value="Añadir amigo"/>
+                                    <div class="card mb-4 shadow-sm">
+                                        <form  action="anadirAmigo?idDesconocido=${desconocido.idUsuario}" method="post">
+                                            <input type="submit" class=" text-center mybuttonoverlap btn btn-info" value="Añadir amigo"/>
                                         </form>
                                         <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><image xlink:href="" height="255" width="100%"/></svg>
                                         <div class="card-body ">
