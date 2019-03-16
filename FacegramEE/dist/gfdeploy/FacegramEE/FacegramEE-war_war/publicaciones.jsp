@@ -3,8 +3,9 @@
     Created on : 13-mar-2019, 16:29:46
     Author     : julio
 --%>
-<%@taglib prefix="" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <!DOCTYPE html>
 <html>
     <head>
@@ -131,9 +132,8 @@
                                 </div>
 
                                 <div class="container">
-                                    <c:forEach items="${posts}" var="post">
-                                        <p>a</p>
-                                        <!--<div class="col" align=center>
+                                    <c:forEach items="${misPosts}" var="post">
+                                        <div class="col" align=center>
 
                                             <div class="">
                                                 <div class="card mb-4 shadow-sm">
@@ -141,7 +141,7 @@
                                                     <svg class="bd-placeholder-img card-img-top" width="100%" height="500" img src="${post.imagen}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><rect width="100%" height="100%" fill="#55595c"/></svg>
 
                                                     <div class="card-body">
-                                                        <p class="card-text">${post.idUsuario} ................</p>
+                                                        <p class="card-text">${post.titulo}</p>
                                                         <div class="d-flex justify-content-between align-items-center">
                                                             <div class="btn-group">
                                                                 <button type="button" class="btn btn-danger btn-sm">Like</button>
@@ -153,7 +153,7 @@
                                                 </div>
                                             </div>
 
-                                        </div>-->
+                                        </div>
                                     </c:forEach>
                                 </div>
                             </div>

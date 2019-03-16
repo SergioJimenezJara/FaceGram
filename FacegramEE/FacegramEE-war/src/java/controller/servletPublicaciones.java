@@ -51,7 +51,7 @@ public class servletPublicaciones extends HttpServlet {
                 request.getRequestDispatcher(ERROR).forward(request, response);
             } else {
                 //Guardar en la sesión
-                request.getSession().setAttribute("posts", listaPosts);
+                request.getSession().setAttribute("misPosts", listaPosts);
                 request.getRequestDispatcher(SUCCESS).forward(request, response);
             }
 
