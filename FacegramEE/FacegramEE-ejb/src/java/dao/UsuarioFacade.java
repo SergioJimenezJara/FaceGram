@@ -63,15 +63,10 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         return usuario;
     }
     
-    public void registrarUsuario(String mail, String password, String username) {
+    public void registrarUsuario(Usuario u) {
         // Código para registrar el usuario en la DDBB, debería de ir en la facade
         
-        String sql = "INSERT INTO u (usuario,pass,correo) VALUES (username,password,mail)";
-        try {
-           em.createQuery(sql).executeUpdate();
-        } catch (Exception e) {
-            throw e;
-        }
+        em.persist(u);
         
     }
 }

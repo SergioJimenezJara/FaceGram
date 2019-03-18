@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
 <html>
     <head>
         <title>Login</title>
@@ -19,14 +19,14 @@
                             <form class="form-signin" action="login" method="post">
                                 <div class="form-label-group">
                                     <input type="email" id="inputEmail" class="form-control" name="email" value="1234@gmail.com" placeholder="Email address" required autofocus>
-                                   
+
                                 </div>
 
                                 <div class="form-label-group">
                                     <input type="password" id="inputPassword" value="1234" class="form-control" name="password" placeholder="Password" required>
-                                   
+
                                 </div>
-                                
+
                                 <p style="color:red;">${error}</p>
 
 
@@ -39,12 +39,15 @@
                                 <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
                                 <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
                             </form>
+                            <form class="form-signup" action="createuser_form.jsp" method="post">
+                                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign up</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
