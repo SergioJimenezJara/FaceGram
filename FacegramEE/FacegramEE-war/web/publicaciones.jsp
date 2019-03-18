@@ -108,53 +108,37 @@
 
                             <div class="container">
                                 <div class="publicaciones">
-                                    <form>
-                                        <label class="my-1 mr-2" for="tipoPublicacion">Subir una publicacion:</label>
-
-
-                                        <br>
-
-                                        <div class="row">
-                                            <div class="col">
-                                                <input type="text" class="form-control" placeholder="Titulo">   
-                                            </div>
-                                            <div class="custom-file" id="custom-file">
-                                                <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-                                                <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
-                                            </div>
-
-                                        </div>
-
-
-                                        <button type="submit" class="btn btn-primary my-1" style="display:none">Publicar</button>
+                                    <form method="post" action="servletPost" enctype="multipart/form-data">
+                                        Choose a file: <input type="file" name="servletPost" />
+                                        <input type="submit" value="Upload" />
                                     </form>
                                 </div>
 
                                 <div class="col" align=center>
 
                                     <c:forEach items="${posts}" var="post">
-                                    <div class="col" align=center>
+                                        <div class="col" align=center>
 
-                                        <div class="col-md-8">
-                                            <div class="card mb-4 shadow-sm">
+                                            <div class="col-md-8">
+                                                <div class="card mb-4 shadow-sm">
 
-                                                <svg class="bd-placeholder-img card-img-top" width="100%" height="500" img src="${post.imagen}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><rect width="100%" height="100%" fill="#55595c"/></svg>
+                                                    <svg class="bd-placeholder-img card-img-top" width="100%" height="500" img src="${post.imagen}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><rect width="100%" height="100%" fill="#55595c"/></svg>
 
-                                                <div class="card-body">
-                                                    <p class="card-text">${post.titulo}</p>
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <div class="btn-group">
-                                                            <button type="button" class="btn btn-danger btn-sm">Like</button>
-                                                            <button type="button" class="btn btn-primary btn-sm">Comentar</button>
+                                                    <div class="card-body">
+                                                        <p class="card-text">${post.titulo}</p>
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <div class="btn-group">
+                                                                <button type="button" class="btn btn-danger btn-sm">Like</button>
+                                                                <button type="button" class="btn btn-primary btn-sm">Comentar</button>
+                                                            </div>
+                                                            <small class="text-muted">${usuario.usuario}</small>
                                                         </div>
-                                                        <small class="text-muted">${usuario.usuario}</small>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                    </div>
-                                </c:forEach>
+                                        </div>
+                                    </c:forEach>
 
 
 
@@ -176,6 +160,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="puclicaciones.js"></script>
     </body>
 </body>
 </html>
