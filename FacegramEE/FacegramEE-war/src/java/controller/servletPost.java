@@ -5,11 +5,18 @@
  */
 package controller;
 
+import com.dropbox.core.DbxDownloader;
+import com.dropbox.core.DbxException;
 import com.dropbox.core.DbxRequestConfig;
+import com.dropbox.core.*;
 import com.dropbox.core.v2.DbxClientV2;
 import com.dropbox.core.v2.files.FileMetadata;
+import com.dropbox.core.v2.files.GetPreviewBuilder;
+import com.dropbox.core.v2.files.GetTemporaryLinkResult;
+import com.dropbox.core.v2.sharing.FileLinkMetadata;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -29,7 +36,8 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
  */
 @WebServlet(name = "ServletPost", urlPatterns = {"/servletPost"})
 public class servletPost extends HttpServlet {
-private static final String SUCCESS = "/publicaciones.jsp";
+
+    private static final String SUCCESS = "/publicaciones.jsp";
 
     public final String UPLOAD_DIRECTORY = "upload";
     public final String DEFAULT_FILENAME = "default.file";
@@ -38,7 +46,7 @@ private static final String SUCCESS = "/publicaciones.jsp";
     public final int MAX_FILE_SIZE = 1024 * 1024 * 40;
     public final int MAX_REQUEST_SIZE = 1024 * 1024 * 50;
 
-    private final String ACCESS_TOKEN = "cN9oYLEd0GAAAAAAAAAAnxPU7levQaOwyolksXJmLBY7twXFko7oUAuEnv0-rebn";
+    private final String ACCESS_TOKEN = "cN9oYLEd0GAAAAAAAAAAuUq__Ygctoj34mhumLpRbVssoFnZK2oltCpd5tUJ-xeP";
 
     DbxClientV2 client = null;
 
@@ -46,7 +54,7 @@ private static final String SUCCESS = "/publicaciones.jsp";
     public void init() throws ServletException {
         super.init();
         // Create Dropbox client
-        DbxRequestConfig config = DbxRequestConfig.newBuilder("dropbox/UploadImage").build();
+        DbxRequestConfig config = DbxRequestConfig.newBuilder("dropbox/Images").build();
         client = new DbxClientV2(config, ACCESS_TOKEN);
     }
 
@@ -68,10 +76,10 @@ private static final String SUCCESS = "/publicaciones.jsp";
             }
 
             try {
-                DbxRequestConfig config = DbxRequestConfig.newBuilder("dropbox/UploadImage").build();
+                DbxRequestConfig config = DbxRequestConfig.newBuilder("dropbox/Images").build();
                 client = new DbxClientV2(config, ACCESS_TOKEN);
                 List<FileItem> formItems = upload.parseRequest(request);
-                
+
                 if (formItems != null && formItems.size() > 0) {
                     for (FileItem item : formItems) {
                         if (!item.isFormField()) {
@@ -80,10 +88,16 @@ private static final String SUCCESS = "/publicaciones.jsp";
                             File storeFile = new File(filePath);
                             item.write(storeFile);
                             request.setAttribute("message", "File " + fileName + " has uploaded successfully!");
-                            // Upload "test.txt" to Dropbox
+                            // Upload to Dropbox
                             try (InputStream in = new FileInputStream(filePath)) {
                                 FileMetadata metadata = client.files().uploadBuilder("/Images/" + fileName)
                                         .uploadAndFinish(in);
+                                //Download
+                                GetTemporaryLinkResult meta = client.files().getTemporaryLink("/Images/" + fileName);
+                                System.out.println(meta.getLink());
+                                GetPreviewBuilder metas = client.files().getPreviewBuilder("/Images/" + fileName);
+                                System.out.println(metas.toString());
+                                
                             }
                         }
                     }

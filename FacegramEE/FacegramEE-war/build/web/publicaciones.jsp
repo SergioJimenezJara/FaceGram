@@ -122,7 +122,7 @@
                                             <div class="col-md-8">
                                                 <div class="card mb-4 shadow-sm">
 
-                                                    <svg class="bd-placeholder-img card-img-top" width="100%" height="500" img src="${post.imagen}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><rect width="100%" height="100%" fill="#55595c"/></svg>
+                                                    <img align="middle" src="https://previews.dropbox.com/p/thumb/AAUhzbbpKzMaJuVUezOLgVQ8y-B94fpqJUQrc01ygWfqrge7_17eLOZNkao4lh3D1Nlf79y4ZZreWhl3rV-rKauZ4lCZjjZJLbnbfLUi2KYVNSaD1tAOlLDb6KhOv_V15Hki93T1ElGmfLEPIZHTRVzJKyhJKXpomqUG_tFcxckOFBuBv6eWLteblSgfy5NwV9ZZl2DHLy0ZR992Zmeiy1m-YP4zyntxQDiR7Fk6hBwl3wjt5rF6uDyo7ZlpQ8FtD8Y6ieH5nPr-1AjMHgez_vXFIpZsLvS2Clyt-6kcr5hl0g/p.jpeg?size_mode=5"></img>
 
                                                     <div class="card-body">
                                                         <p class="card-text">${post.titulo}</p>
