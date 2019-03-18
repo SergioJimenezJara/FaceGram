@@ -2,6 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/asafe/OneDrive/Documentos/GitHub/FaceGram/FacegramEE/FacegramEE-war/src/java/controller/servletPost.java</file>
+            <file>file:/C:/Users/asafe/OneDrive/Documentos/GitHub/FaceGram/FacegramEE/FacegramEE-war/src/java/service/PostFacadeREST.java</file>
+            <file>file:/C:/Users/asafe/OneDrive/Documentos/GitHub/FaceGram/FacegramEE/FacegramEE-war/src/java/controller/servletPublicaciones.java</file>
+            <file>file:/C:/Users/asafe/OneDrive/Documentos/GitHub/FaceGram/FacegramEE/FacegramEE-war/web/publicaciones.jsp</file>
+        </group>
     </open-files>
 </project-private>

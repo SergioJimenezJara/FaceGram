@@ -46,7 +46,7 @@ public class servletPost extends HttpServlet {
     public final int MAX_FILE_SIZE = 1024 * 1024 * 40;
     public final int MAX_REQUEST_SIZE = 1024 * 1024 * 50;
 
-    private final String ACCESS_TOKEN = "cN9oYLEd0GAAAAAAAAAAuUq__Ygctoj34mhumLpRbVssoFnZK2oltCpd5tUJ-xeP";
+    private final String ACCESS_TOKEN = "cN9oYLEd0GAAAAAAAAAAwWJhGnndY4QJTIxAXrE6iyuvn-XhsmCgyQ4q-IK23a7h";
 
     DbxClientV2 client = null;
 
