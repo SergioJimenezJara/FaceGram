@@ -55,7 +55,7 @@ public class PostFacade extends AbstractFacade<Post> {
             // trae las id de los amigos
             String sql = "select a from Amigo a where a.idUsuario1=:id";
             listaAmigos = (List<Amigo>) em.createQuery(sql).setParameter("id", user).getResultList();
-            for(Amigo a:listaAmigos){
+            for (Amigo a : listaAmigos) {
                 listaIdAmigos.add(a.getIdUsuario2().getIdUsuario());
             }
             // trae todos los post de los demas
@@ -67,5 +67,14 @@ public class PostFacade extends AbstractFacade<Post> {
         Collections.reverse(listaPost);
 
         return listaPost;
+    }
+
+    public void publicar(Post p) {
+        try {
+            em.persist(p);
+
+        } catch (Exception e) {
+            throw e;
+        }
     }
 }

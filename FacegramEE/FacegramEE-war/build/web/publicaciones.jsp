@@ -108,26 +108,20 @@
 
 
                             <div class="container ">
-                                <div class="publicaciones">
-                                    <form>
+                                <div class="publicaciones mb-3">
+                                    <form action="publicar" method="post">
                                         <label class="my-1 mr-2" for="tipoPublicacion">Subir una publicacion:</label>
-
-
                                         <br>
-
                                         <div class="row">
                                             <div class="col">
-                                                <input type="text" class="form-control" placeholder="Titulo">   
+                                                <input type="text" class="form-control" name="titulo" placeholder="Titulo">   
                                             </div>
                                             <div class="custom-file" id="custom-file">
                                                 <input type="file" class="custom-file-input" id="customFileLang" lang="es">
                                                 <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
                                             </div>
-
                                         </div>
-
-
-                                        <button type="submit" class="btn btn-primary my-1" style="display:none">Publicar</button>
+                                        <button type="submit" class="btn btn-primary my-1">Publicar</button>
                                     </form>
                                 </div>
 
